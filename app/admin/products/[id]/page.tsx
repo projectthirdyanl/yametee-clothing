@@ -28,10 +28,19 @@ export default async function EditProductPage({ params }: { params: { id: string
     notFound()
   }
 
+  // Transform product to match ProductForm's expected types (convert Decimal to string)
+  const transformedProduct = {
+    ...product,
+    variants: product.variants.map((variant) => ({
+      ...variant,
+      price: variant.price.toString(),
+    })),
+  }
+
   return (
     <AdminLayout>
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Edit Product</h1>
-      <ProductForm product={product} />
+      <ProductForm product={transformedProduct} />
     </AdminLayout>
   )
 }
