@@ -202,10 +202,10 @@ export default async function AdminDashboard() {
         </div>
 
         <div className="space-y-4 rounded-3xl border border-white/10 bg-street-carbon/70 p-6">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.4em] text-white/60">Recent Orders</p>
-              <h2 className="text-2xl font-semibold">Latest traffic from Yametee.com</h2>
+                <h2 className="text-2xl font-semibold">Latest traffic from Yame-Tee.com</h2>
             </div>
             <a
               href="/admin/orders"

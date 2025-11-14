@@ -84,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               )}
             </button>
             <Link href="/admin" className="font-display text-2xl tracking-[0.2em] text-white">
-              YAMETEE OPS
+              YAME-TEE OPS
             </Link>
             <span className="hidden rounded-full border border-white/15 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/60 md:inline-flex">
               Manila Control Room

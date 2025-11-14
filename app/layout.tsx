@@ -17,8 +17,8 @@ const displayFont = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Yametee - Anime-Inspired Japanese Streetwear",
-  description: "Premium anime-inspired Japanese streetwear T-shirts",
+  title: "Yame-Tee — Anime-Inspired Streetwear",
+  description: "Yame-Tee crafts premium anime-inspired streetwear tees.",
 };
 
 export default function RootLayout({
