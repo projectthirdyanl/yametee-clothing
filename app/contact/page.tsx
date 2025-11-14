@@ -12,7 +12,7 @@ export default function ContactPage() {
 
           <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-strong:text-gray-900 dark:prose-strong:text-white">
             <p className="text-lg mb-8">
-              Got questions about sizing, orders, or collabs? We're here to help.
+              Got questions about sizing, orders, or collabs? We&apos;re here to help.
             </p>
 
             <div className="bg-white dark:bg-yametee-gray border border-gray-200 dark:border-gray-700 rounded-lg p-8 mb-8">

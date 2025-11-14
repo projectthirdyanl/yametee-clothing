@@ -50,7 +50,7 @@ export default function DeleteProductButton({ productId, productName }: DeletePr
               Delete Product
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Are you sure you want to delete <strong>"{productName}"</strong>? This action cannot
+              Are you sure you want to delete <strong>&quot;{productName}&quot;</strong>? This action cannot
               be undone and will delete all variants and images associated with this product.
             </p>
             <div className="flex gap-3 justify-end">

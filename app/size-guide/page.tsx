@@ -14,7 +14,7 @@ export default function SizeGuidePage() {
           <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300">
             <p className="text-lg mb-6">
               All our tees are <strong>unisex</strong> and true-to-size.  
-              If you prefer a looser "oversized" look, we recommend going <strong>one size up</strong>.
+              If you prefer a looser &quot;oversized&quot; look, we recommend going <strong>one size up</strong>.
             </p>
 
             <div className="overflow-x-auto mb-6">

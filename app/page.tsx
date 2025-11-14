@@ -52,7 +52,7 @@ export default async function Home() {
               Anime-Inspired Japanese Streetwear
             </p>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in">
-              <strong className="text-gray-900 dark:text-white">Yametee is a Filipino anime streetwear brand</strong> inspired by Japanese pop culture and the phrase <em>"yamete kudasai"</em>. We design bold, high-quality anime graphic tees made for everyday wear.
+              <strong className="text-gray-900 dark:text-white">Yametee is a Filipino anime streetwear brand</strong> inspired by Japanese pop culture and the phrase <em>&quot;yamete kudasai&quot;</em>. We design bold, high-quality anime graphic tees made for everyday wear.
             </p>
             <Link
               href="/products"

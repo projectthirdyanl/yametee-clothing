@@ -27,7 +27,7 @@ export default function ShippingPage() {
               </ul>
               <p className="mt-4">
                 We work with trusted couriers to make sure your Yametee order arrives safely.  
-                Once your order is shipped, you'll receive a <strong>tracking number</strong> via email or SMS (where available).
+                Once your order is shipped, you&apos;ll receive a <strong>tracking number</strong> via email or SMS (where available).
               </p>
             </section>
 

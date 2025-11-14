@@ -137,14 +137,14 @@ export default async function AdminDashboard() {
         {/* Additional Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white dark:bg-yametee-gray border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400">Today's Sales</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Today&apos;s Sales</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
               {formatCurrency(stats.todaySales)}
             </p>
           </div>
 
           <div className="bg-white dark:bg-yametee-gray border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400">This Month's Sales</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">This Month&apos;s Sales</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
               {formatCurrency(stats.monthSales)}
             </p>

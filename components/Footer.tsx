@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <p className="text-lg font-bold mb-2 text-gray-900 dark:text-white">YAMETEE</p>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              <strong className="text-gray-900 dark:text-white">Yametee is a Filipino anime streetwear brand</strong> inspired by Japanese pop culture and the phrase <em>"yamete kudasai"</em>.
+              <strong className="text-gray-900 dark:text-white">Yametee is a Filipino anime streetwear brand</strong> inspired by Japanese pop culture and the phrase <em>&quot;yamete kudasai&quot;</em>.
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               We design bold, high-quality anime graphic tees made for everyday wear—from binge-watching days to night-outs with the tropa.

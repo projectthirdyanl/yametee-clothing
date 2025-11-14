@@ -57,8 +57,8 @@ export default function FAQPage() {
             <section className="mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
               <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">6. How can I track my order?</h2>
               <p className="text-gray-700 dark:text-gray-300">
-                Once your order has been shipped, we'll send your tracking details via email or SMS (where available).  
-                You can use this tracking number on the courier's website to check the delivery status.
+                Once your order has been shipped, we&apos;ll send your tracking details via email or SMS (where available).  
+                You can use this tracking number on the courier&apos;s website to check the delivery status.
               </p>
             </section>
 
