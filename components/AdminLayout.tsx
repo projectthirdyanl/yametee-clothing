@@ -8,6 +8,8 @@ const navigation = [
   { name: 'Dashboard', href: '/admin', icon: '📊' },
   { name: 'Orders', href: '/admin/orders', icon: '📦' },
   { name: 'Products', href: '/admin/products', icon: '👕' },
+  { name: 'Collections', href: '/admin/collections', icon: '🎨' },
+  { name: 'Promotions', href: '/admin/promotions', icon: '🎟️' },
   { name: 'Customers', href: '/admin/customers', icon: '👥' },
   { name: 'Inventory', href: '/admin/inventory', icon: '📊' },
 ]
