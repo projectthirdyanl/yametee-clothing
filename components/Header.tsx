@@ -40,8 +40,11 @@ export default function Header() {
             priority
           />
         </Link>
-        
+
         <div className="flex items-center gap-6">
+          <Link href="/collections" className="text-gray-700 dark:text-gray-200 hover:text-yametee-red transition-colors font-medium">
+            Collections
+          </Link>
           <Link href="/products" className="text-gray-700 dark:text-gray-200 hover:text-yametee-red transition-colors font-medium">
             Products
           </Link>

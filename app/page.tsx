@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { prisma } from '@/lib/prisma'
+import { formatReleaseLabel, getPrimaryReleaseWindow, humanizeReleaseStatus } from '@/lib/releases'
 
 async function getFeaturedProducts() {
   try {
@@ -27,8 +28,46 @@ async function getFeaturedProducts() {
   }
 }
 
+async function getFeaturedCollection() {
+  try {
+    return await prisma.collection.findFirst({
+      where: { status: 'PUBLISHED' },
+      orderBy: [
+        { launchDate: 'desc' },
+        { createdAt: 'desc' },
+      ],
+      include: {
+        products: {
+          orderBy: { displayOrder: 'asc' },
+          take: 1,
+          include: {
+            product: {
+              include: {
+                images: {
+                  where: { isPrimary: true },
+                  take: 1,
+                },
+                variants: {
+                  orderBy: { price: 'asc' },
+                  take: 1,
+                },
+              },
+            },
+          },
+        },
+        releaseWindows: {
+          orderBy: { startsAt: 'asc' },
+        },
+      },
+    })
+  } catch (error) {
+    console.error('Error fetching featured collection:', error)
+    return null
+  }
+}
+
 export default async function Home() {
-  const products = await getFeaturedProducts()
+  const [products, featuredCollection] = await Promise.all([getFeaturedProducts(), getFeaturedCollection()])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -62,6 +101,73 @@ export default async function Home() {
             </Link>
           </div>
         </section>
+
+          {featuredCollection &&
+            (() => {
+              const releaseCopy = formatReleaseLabel(featuredCollection.releaseWindows, {
+                fallbackDate: featuredCollection.launchDate,
+                style: 'long',
+              })
+              const heroImage =
+                featuredCollection.heroImage ||
+                featuredCollection.lookbookImages[0] ||
+                featuredCollection.products[0]?.product.images[0]?.imageUrl ||
+                '/images/logos/logo-main.png'
+              const primaryWindow = getPrimaryReleaseWindow(featuredCollection.releaseWindows)
+              return (
+                <section className="bg-yametee-dark text-white py-16 px-4">
+                  <div className="container mx-auto grid gap-10 md:grid-cols-2 items-center">
+                    <div className="space-y-4">
+                      <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Now Shipping</p>
+                      <h2 className="text-4xl font-bold">{featuredCollection.title}</h2>
+                      {featuredCollection.subtitle && (
+                        <p className="text-lg text-gray-300">{featuredCollection.subtitle}</p>
+                      )}
+                      {featuredCollection.description && (
+                        <p className="text-gray-300">{featuredCollection.description}</p>
+                      )}
+
+                      <div className="flex flex-wrap gap-3 text-sm">
+                        {releaseCopy && (
+                          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2">
+                            {releaseCopy}
+                          </span>
+                        )}
+                        <span className="inline-flex rounded-full border border-white/20 px-4 py-2">
+                          {featuredCollection.products.length} featured piece
+                          {featuredCollection.products.length === 1 ? '' : 's'}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-wrap gap-4 pt-4">
+                        <Link
+                          href={`/collections/${featuredCollection.slug}`}
+                          className="rounded-full bg-white text-yametee-dark px-8 py-3 font-semibold uppercase tracking-widest shadow-lg shadow-yametee-red/30 transition hover:-translate-y-0.5"
+                        >
+                          Explore the drop
+                        </Link>
+                        <Link
+                          href="/collections"
+                          className="rounded-full border border-white/30 px-8 py-3 font-semibold uppercase tracking-widest text-white transition hover:bg-white/10"
+                        >
+                          All collections
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.4)]">
+                      <img src={heroImage} alt={featuredCollection.title} className="h-full w-full object-cover" />
+                      {primaryWindow && (
+                        <div className="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1 text-sm font-semibold text-yametee-dark shadow-lg">
+                          <span className="h-2 w-2 rounded-full bg-yametee-red" />
+                          {humanizeReleaseStatus(primaryWindow.status)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </section>
+              )
+            })()}
 
         {/* Featured Products */}
         {products.length > 0 && (
