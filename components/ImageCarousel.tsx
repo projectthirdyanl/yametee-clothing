@@ -1,5 +1,7 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
@@ -125,31 +127,32 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [filteredImages.length, goToPrevious, goToNext])
 
-  if (filteredImages.length === 0) {
-    return (
-      <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark rounded-xl overflow-hidden flex items-center justify-center border border-gray-200 dark:border-yametee-lightGray/20">
-        <span className="text-gray-400 dark:text-gray-500 text-lg">No Image Available</span>
-      </div>
-    )
-  }
+    if (filteredImages.length === 0) {
+      return (
+        <div className="flex aspect-square items-center justify-center rounded-3xl border border-white/10 bg-street-graphite text-white/50">
+          <span className="text-lg tracking-[0.4em]">NO IMAGE</span>
+        </div>
+      )
+    }
 
-  return (
-    <div className="relative">
-      {/* Main Image Display */}
-      <div
-        className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark rounded-xl overflow-hidden relative group border border-gray-200 dark:border-yametee-lightGray/20"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        {filteredImages[currentIndex] && (
-          <img
-            src={filteredImages[currentIndex].imageUrl}
-            alt={`${productName} - Image ${currentIndex + 1}`}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            key={`${filteredImages[currentIndex].id || currentIndex}-${selectedColor || 'default'}`}
-          />
-        )}
+    return (
+      <div className="relative">
+        {/* Main Image Display */}
+        <div
+          className="relative aspect-square overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-street-graphite via-street-carbon to-black"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,var(--yametee-red)_0%,transparent_65%)] opacity-30" />
+          {filteredImages[currentIndex] && (
+            <img
+              src={filteredImages[currentIndex].imageUrl}
+              alt={`${productName} - Image ${currentIndex + 1}`}
+              className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+              key={`${filteredImages[currentIndex].id || currentIndex}-${selectedColor || 'default'}`}
+            />
+          )}
 
         {/* Navigation Arrows */}
         {filteredImages.length > 1 && (
@@ -182,15 +185,15 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
         )}
 
         {/* Image Counter */}
-        {filteredImages.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-            {currentIndex + 1} / {filteredImages.length}
-          </div>
-        )}
+          {filteredImages.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-sm text-white backdrop-blur-sm">
+              {currentIndex + 1} / {filteredImages.length}
+            </div>
+          )}
 
         {/* Dots Indicator */}
         {filteredImages.length > 1 && (
-          <div className="absolute bottom-4 right-4 flex gap-2 z-20">
+            <div className="absolute bottom-4 right-4 z-20 flex gap-2">
             {filteredImages.map((_, index) => (
               <button
                 key={index}
@@ -200,11 +203,11 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
                   e.stopPropagation()
                   goToIndex(index)
                 }}
-                className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
-                  index === currentIndex
-                    ? 'bg-yametee-red w-6'
-                    : 'bg-white/40 hover:bg-white/60'
-                }`}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex
+                      ? 'w-6 bg-street-lime'
+                      : 'w-2 bg-white/40 hover:bg-white/60'
+                  }`}
                 aria-label={`Go to image ${index + 1}`}
               />
             ))}
@@ -213,8 +216,8 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
       </div>
 
       {/* Thumbnail Strip */}
-      {filteredImages.length > 1 && (
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        {filteredImages.length > 1 && (
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {filteredImages.map((image, index) => (
             <button
               key={image.id || index}
@@ -224,16 +227,16 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
                 e.stopPropagation()
                 goToIndex(index)
               }}
-              className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                index === currentIndex
-                  ? 'border-yametee-red ring-2 ring-yametee-red/50'
-                  : 'border-gray-300 dark:border-yametee-lightGray/30 hover:border-gray-400 dark:hover:border-yametee-lightGray/50'
-              }`}
+                className={`flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl border transition-all ${
+                  index === currentIndex
+                    ? 'border-street-lime bg-street-lime/5'
+                    : 'border-white/10 bg-white/5 hover:border-street-lime/40'
+                }`}
             >
               <img
                 src={image.imageUrl}
                 alt={`${productName} thumbnail ${index + 1}`}
-                className="w-full h-full object-cover pointer-events-none"
+                  className="h-full w-full object-cover"
                 loading="lazy"
               />
             </button>

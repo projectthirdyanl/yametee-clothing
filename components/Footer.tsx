@@ -1,54 +1,107 @@
 import Link from 'next/link'
 
+const quickLinks = [
+  { label: 'Products', href: '/products' },
+  { label: 'About', href: '/about' },
+  { label: 'Size Guide', href: '/size-guide' },
+  { label: 'FAQ', href: '/faq' },
+]
+
+const supportLinks = [
+  { label: 'Shipping & Delivery', href: '/shipping' },
+  { label: 'Returns & Exchanges', href: '/returns' },
+  { label: 'Contact', href: '/contact' },
+]
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+]
+
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-yametee-gray border-t border-gray-200 dark:border-yametee-lightGray/30 mt-20 transition-colors duration-300">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <p className="text-lg font-bold mb-2 text-gray-900 dark:text-white">YAMETEE</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              <strong className="text-gray-900 dark:text-white">Yametee is a Filipino anime streetwear brand</strong> inspired by Japanese pop culture and the phrase <em>&quot;yamete kudasai&quot;</em>.
+    <footer className="mt-24 border-t border-white/10 bg-street-carbon/80 text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid gap-10 lg:grid-cols-[2fr,1fr]">
+          <div className="space-y-6">
+            <p className="text-xs uppercase tracking-[0.5em] text-white/50">Yametee Manila</p>
+            <h2 className="font-display text-4xl uppercase tracking-[0.3em] text-white">
+              Streetwear for <span className="text-street-lime">T-Shirt</span> purists.
+            </h2>
+            <p className="max-w-2xl text-base text-white/70">
+              Built like your favorite skate decks—rugged, oversized, pre-shrunk. Designed for Manila humidity
+              with breathable 240GSM cotton and prints that never crack. This is your daily uniform.
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              We design bold, high-quality anime graphic tees made for everyday wear—from binge-watching days to night-outs with the tropa.
-            </p>
+            <div className="flex flex-wrap gap-3">
+              {['Heavyweight 240GSM', 'Pre-shrunk', 'Silkscreened', 'Limited Drops'].map((tag) => (
+                <span key={tag} className="stat-pill text-xs uppercase tracking-[0.3em] text-white/80">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Quick Links */}
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-xs uppercase tracking-[0.4em] text-white/60">Stay Early</p>
+            <h3 className="mt-3 text-2xl font-semibold">Be first to cop every drop.</h3>
+            <p className="mt-2 text-sm text-white/70">
+              Weekly tee sketches, drop timers, and studio stories straight to your inbox.
+            </p>
+            <div className="mt-5 space-y-3">
+              <input
+                type="email"
+                placeholder="email@yametee.club"
+                className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-street-lime/60 focus:outline-none"
+              />
+              <button className="w-full rounded-2xl bg-street-lime px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-street-carbon shadow-neon transition hover:-translate-y-0.5">
+                Join The List
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-8 border-t border-white/10 pt-8 md:grid-cols-3">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link href="/products" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Products</Link></li>
-              <li><Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">About Us</Link></li>
-              <li><Link href="/size-guide" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Size Guide</Link></li>
-              <li><Link href="/faq" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">FAQ</Link></li>
+            <h4 className="text-xs uppercase tracking-[0.3em] text-white/60">Quick Links</h4>
+            <ul className="mt-4 space-y-2 text-sm text-white/70">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition hover:text-street-lime">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* Customer Service */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Customer Service</h3>
-            <ul className="space-y-2">
-              <li><Link href="/shipping" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Shipping & Delivery</Link></li>
-              <li><Link href="/returns" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Returns & Exchanges</Link></li>
-              <li><Link href="/contact" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Contact Us</Link></li>
+            <h4 className="text-xs uppercase tracking-[0.3em] text-white/60">Support</h4>
+            <ul className="mt-4 space-y-2 text-sm text-white/70">
+              {supportLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition hover:text-street-lime">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* Legal */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Legal</h3>
-            <ul className="space-y-2">
-              <li><Link href="/privacy-policy" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors">Terms of Service</Link></li>
+            <h4 className="text-xs uppercase tracking-[0.3em] text-white/60">Legal</h4>
+            <ul className="mt-4 space-y-2 text-sm text-white/70">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition hover:text-street-lime">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
-          <p className="text-xs text-gray-600 dark:text-gray-400">© {new Date().getFullYear()} Yametee. All rights reserved.</p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Yametee Studio. All rights reserved.</p>
+          <p className="uppercase tracking-[0.4em]">Built for tees · Made in Manila</p>
         </div>
       </div>
     </footer>

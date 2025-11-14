@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { prisma } from '@/lib/prisma'
-import { formatPrice } from '@/lib/utils'
+import ProductCard from '@/components/ProductCard'
 
 async function getProducts() {
   try {
@@ -31,58 +30,38 @@ export default async function ProductsPage() {
   const products = await getProducts()
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Header />
-      
-      <main className="flex-1 py-12 px-4">
-        <div className="container mx-auto">
-          <h1 className="text-4xl font-bold mb-12 text-gray-900 dark:text-white">All Products</h1>
-          
+
+      <main className="flex-1 px-4 py-16">
+        <div className="container mx-auto space-y-12">
+          <div className="rounded-[32px] border border-white/10 bg-street-carbon/70 p-8 text-white">
+            <p className="text-xs uppercase tracking-[0.4em] text-white/60">Catalog 07 · Tees Only</p>
+            <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <h1 className="font-display text-4xl tracking-[0.2em]">Every tee is a statement piece.</h1>
+              <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
+                {['Oversized fit', '240GSM', 'Limited runs'].map((chip) => (
+                  <span key={chip} className="stat-pill text-white/70">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="mt-4 max-w-3xl text-white/70">
+              Scroll through the full Yametee roster—art heavy tees inspired by anime, skate grime, and Manila neon.
+              No filler, no basics. Just grails.
+            </p>
+          </div>
+
           {products.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-600 dark:text-gray-400 text-xl">No products available yet.</p>
+            <div className="rounded-3xl border border-white/10 bg-street-carbon/60 py-20 text-center text-white/60">
+              <p className="text-xl uppercase tracking-[0.4em]">No tees yet. Drop incoming.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.map((product) => {
-                const variant = product.variants[0]
-                const image = product.images[0]
-                
-                return (
-                  <Link
-                    key={product.id}
-                    href={`/products/${product.slug}`}
-                    className="group bg-white dark:bg-yametee-gray border border-gray-200 dark:border-yametee-lightGray/30 rounded-xl overflow-hidden hover:border-yametee-red/50 transition-all hover:scale-105 shadow-lg hover:shadow-yametee-red/20"
-                  >
-                    {image ? (
-                      <div className="aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark">
-                        <img
-                          src={image.imageUrl}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                    ) : (
-                      <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark flex items-center justify-center">
-                        <span className="text-gray-400">No Image</span>
-                      </div>
-                    )}
-                    <div className="p-4 bg-white dark:bg-yametee-gray">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-yametee-red transition-colors line-clamp-2">
-                        {product.name}
-                      </h3>
-                      {variant && (
-                        <div className="flex items-baseline gap-2">
-                          <p className="text-yametee-red text-xl font-bold">
-                            {formatPrice(variant.price)}
-                          </p>
-                          <p className="text-gray-400 text-sm line-through">₱799</p>
-                        </div>
-                      )}
-                    </div>
-                  </Link>
-                )
-              })}
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
           )}
         </div>
