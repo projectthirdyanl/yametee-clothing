@@ -34,6 +34,7 @@ export default function CheckoutPage() {
     province: '',
     postalCode: '',
   })
+  const [paymentMethod, setPaymentMethod] = useState<'gcash' | 'paymaya' | 'card' | 'bank_transfer' | ''>('')
 
   useEffect(() => {
     const loadCart = async () => {
@@ -73,12 +74,19 @@ export default function CheckoutPage() {
         imageUrl: item.imageUrl,
       }))
 
+      if (!paymentMethod) {
+        alert('Please select a payment method')
+        setLoading(false)
+        return
+      }
+
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           cart: checkoutCart,
           customer: formData,
+          paymentMethod,
         }),
       })
 
@@ -162,6 +170,104 @@ export default function CheckoutPage() {
                       className="w-full bg-white dark:bg-yametee-dark border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-white focus:outline-none focus:border-yametee-red transition-colors"
                     />
                   </div>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-yametee-gray border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Payment Method</h2>
+                <div className="space-y-3">
+                  <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    paymentMethod === 'gcash'
+                      ? 'border-yametee-red bg-yametee-red/5 dark:bg-yametee-red/10'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-yametee-red/50'
+                  }`}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="gcash"
+                      checked={paymentMethod === 'gcash'}
+                      onChange={(e) => setPaymentMethod(e.target.value as any)}
+                      className="w-5 h-5 text-yametee-red focus:ring-yametee-red focus:ring-2"
+                    />
+                    <div className="ml-3 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-900 dark:text-white font-semibold">GCash</span>
+                        <span className="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded">Mobile Wallet</span>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Pay using your GCash account</p>
+                    </div>
+                  </label>
+
+                  <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    paymentMethod === 'paymaya'
+                      ? 'border-yametee-red bg-yametee-red/5 dark:bg-yametee-red/10'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-yametee-red/50'
+                  }`}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="paymaya"
+                      checked={paymentMethod === 'paymaya'}
+                      onChange={(e) => setPaymentMethod(e.target.value as any)}
+                      className="w-5 h-5 text-yametee-red focus:ring-yametee-red focus:ring-2"
+                    />
+                    <div className="ml-3 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-900 dark:text-white font-semibold">PayMaya</span>
+                        <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded">Mobile Wallet</span>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Pay using your PayMaya account</p>
+                    </div>
+                  </label>
+
+                  <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    paymentMethod === 'card'
+                      ? 'border-yametee-red bg-yametee-red/5 dark:bg-yametee-red/10'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-yametee-red/50'
+                  }`}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="card"
+                      checked={paymentMethod === 'card'}
+                      onChange={(e) => setPaymentMethod(e.target.value as any)}
+                      className="w-5 h-5 text-yametee-red focus:ring-yametee-red focus:ring-2"
+                    />
+                    <div className="ml-3 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-900 dark:text-white font-semibold">Credit/Debit Card</span>
+                        <span className="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded">Card</span>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Visa, Mastercard, JCB, and more</p>
+                    </div>
+                  </label>
+
+                  <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    paymentMethod === 'bank_transfer'
+                      ? 'border-yametee-red bg-yametee-red/5 dark:bg-yametee-red/10'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-yametee-red/50'
+                  }`}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="bank_transfer"
+                      checked={paymentMethod === 'bank_transfer'}
+                      onChange={(e) => setPaymentMethod(e.target.value as any)}
+                      className="w-5 h-5 text-yametee-red focus:ring-yametee-red focus:ring-2"
+                    />
+                    <div className="ml-3 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-900 dark:text-white font-semibold">Online Banking</span>
+                        <span className="text-xs px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded">Bank Transfer</span>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Direct bank transfer via online banking</p>
+                    </div>
+                  </label>
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                  <p className="text-sm text-blue-800 dark:text-blue-300">
+                    <strong>Note:</strong> PayPal is not available through PayMongo. For PayPal payments, please contact our support team.
+                  </p>
                 </div>
               </div>
 

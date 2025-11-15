@@ -4,7 +4,17 @@ import { prisma } from '@/lib/prisma'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, slug, description, status, images, variants } = body
+    const {
+      name,
+      slug,
+      description,
+      status,
+      images = [],
+      variants = [],
+      isFeatured = false,
+      isDrop = false,
+      isStandard = true,
+    } = body
 
     // Check if slug already exists
     const existing = await prisma.product.findUnique({
@@ -22,6 +32,9 @@ export async function POST(request: NextRequest) {
         slug,
         description: description || '',
         status: status || 'DRAFT',
+        isFeatured,
+        isDrop,
+        isStandard,
         images: {
           create: images.map((img: any, index: number) => ({
             imageUrl: img.imageUrl,

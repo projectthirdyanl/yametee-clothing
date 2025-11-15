@@ -1,13 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { generateOrderNumber } from '@/lib/utils'
-import { createPayMongoCheckout } from '@/lib/paymongo'
+import { createPayMongoCheckout, PaymentMethod } from '@/lib/paymongo'
 import { getCartSessionId, getOrCreateCart } from '@/lib/cart'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { cart, customer } = body
+    const { cart, customer, paymentMethod } = body
+
+    // Validate payment method
+    const validPaymentMethods: PaymentMethod[] = ['gcash', 'paymaya', 'card', 'bank_transfer']
+    if (!paymentMethod || !validPaymentMethods.includes(paymentMethod)) {
+      return NextResponse.json(
+        { error: 'Please select a valid payment method' },
+        { status: 400 }
+      )
+    }
 
     if (!cart || cart.length === 0) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 })
@@ -100,20 +109,22 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // Create PayMongo checkout session
+    // Create PayMongo checkout session with selected payment method
     const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
     const checkoutSession = await createPayMongoCheckout({
       amount: Math.round(grandTotal * 100), // Convert to centavos
       description: `Yametee Order ${orderNumber}`,
       success_url: `${baseUrl}/order/${orderNumber}?status=success`,
       failed_url: `${baseUrl}/checkout?status=failed`,
+      paymentMethod: paymentMethod as PaymentMethod,
       metadata: {
         orderId: order.id,
         orderNumber: order.orderNumber,
+        paymentMethod,
       },
     })
 
-    // Create payment record
+    // Create payment record with payment method
     await prisma.payment.create({
       data: {
         orderId: order.id,
@@ -121,6 +132,9 @@ export async function POST(request: NextRequest) {
         providerPaymentId: checkoutSession.data.id,
         amount: grandTotal,
         status: 'PENDING',
+        rawPayload: {
+          paymentMethod,
+        } as any,
       },
     })
 

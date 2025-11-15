@@ -133,6 +133,10 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
     )
   }
 
+  const hoverIndex = filteredImages.length > 1 ? (currentIndex + 1) % filteredImages.length : null
+  const currentImage = filteredImages[currentIndex]
+  const hoverImage = hoverIndex !== null ? filteredImages[hoverIndex] : null
+
   return (
     <div className="relative">
       {/* Main Image Display */}
@@ -142,13 +146,25 @@ export default function ImageCarousel({ images, selectedColor, productName }: Im
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {filteredImages[currentIndex] && (
-          <img
-            src={filteredImages[currentIndex].imageUrl}
-            alt={`${productName} - Image ${currentIndex + 1}`}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            key={`${filteredImages[currentIndex].id || currentIndex}-${selectedColor || 'default'}`}
-          />
+        {currentImage && (
+          <>
+            <img
+              src={currentImage.imageUrl}
+              alt={`${productName} - Image ${currentIndex + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${
+                hoverImage ? 'opacity-100 group-hover:opacity-0' : 'opacity-100'
+              } group-hover:scale-105`}
+              key={`${currentImage.id || currentIndex}-${selectedColor || 'default'}-primary`}
+            />
+            {hoverImage && (
+              <img
+                src={hoverImage.imageUrl}
+                alt={`${productName} - Alternate view`}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                key={`${hoverImage.id || hoverIndex}-${selectedColor || 'default'}-hover`}
+              />
+            )}
+          </>
         )}
 
         {/* Navigation Arrows */}

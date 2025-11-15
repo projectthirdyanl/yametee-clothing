@@ -35,8 +35,8 @@ export default function Header() {
 
   const navLinks = [
     { href: '/products', label: 'SHOP TEES' },
-    { href: '/products', label: 'DROPS' },
-    { href: '/products', label: 'LOOKBOOK' },
+    { href: '/drops', label: 'DROPS' },
+    { href: '/products', label: 'FEATURED' },
     { href: '/about', label: 'STORY' },
     { href: '/contact', label: 'SUPPORT' },
   ]
@@ -70,8 +70,12 @@ export default function Header() {
             {/* Center Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href || 
-                  (link.href === '/products' && pathname?.startsWith('/products'))
+                const isProductsLink = link.href === '/products'
+                const isDropsLink = link.href === '/drops'
+                const isActive =
+                  pathname === link.href ||
+                  (isProductsLink && pathname?.startsWith('/products')) ||
+                  (isDropsLink && pathname?.startsWith('/drops'))
                 return (
                   <Link
                     key={link.href}
@@ -110,8 +114,12 @@ export default function Header() {
           {/* Mobile Navigation */}
           <div className="md:hidden mt-4 pb-2 flex items-center gap-4 overflow-x-auto scrollbar-hide">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || 
-                (link.href === '/products' && pathname?.startsWith('/products'))
+              const isProductsLink = link.href === '/products'
+              const isDropsLink = link.href === '/drops'
+              const isActive =
+                pathname === link.href ||
+                (isProductsLink && pathname?.startsWith('/products')) ||
+                (isDropsLink && pathname?.startsWith('/drops'))
               return (
                 <Link
                   key={link.href}

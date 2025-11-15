@@ -9,7 +9,7 @@ export default function AnnouncementBar() {
   ]
 
   return (
-    <div className="relative overflow-hidden bg-yametee-red text-white py-2.5 border-b border-yametee-red/30 shadow-md">
+    <div className="relative overflow-hidden bg-gray-900 text-white py-2.5 border-b border-black/40 dark:border-white/10 shadow-inner dark:bg-black">
       <div className="flex animate-scroll whitespace-nowrap">
         {/* Duplicate announcements for seamless infinite loop */}
         {[...announcements, ...announcements, ...announcements].map((announcement, index) => (
@@ -18,13 +18,13 @@ export default function AnnouncementBar() {
             className="inline-flex items-center mx-12 text-sm md:text-base font-semibold tracking-wide"
           >
             <span className="drop-shadow-sm">{announcement}</span>
-            <span className="mx-4 text-yellow-300">•</span>
+            <span className="mx-4 text-yellow-400">•</span>
           </div>
         ))}
       </div>
       {/* Gradient overlays for smooth fade effect on edges */}
-      <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-[#FF0404] via-[#FF0404]/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#FF0404] via-[#FF0404]/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10" />
     </div>
   )
 }

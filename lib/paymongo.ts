@@ -2,11 +2,14 @@
 const PAYMONGO_SECRET_KEY = process.env.PAYMONGO_SECRET_KEY || ''
 const PAYMONGO_PUBLIC_KEY = process.env.PAYMONGO_PUBLIC_KEY || ''
 
+export type PaymentMethod = 'gcash' | 'paymaya' | 'card' | 'bank_transfer'
+
 export interface PayMongoCheckoutSession {
   amount: number // in centavos
   description: string
   success_url: string
   failed_url: string
+  paymentMethod?: PaymentMethod // Optional: if provided, only show this method
   metadata?: Record<string, any>
 }
 
@@ -21,9 +24,25 @@ export interface PayMongoResponse {
   }
 }
 
+/**
+ * Map payment method to PayMongo payment method types
+ * PayMongo supports: gcash, paymaya, card, and bank_transfer (online banking)
+ */
+function getPaymentMethodTypes(paymentMethod?: PaymentMethod): string[] {
+  if (paymentMethod) {
+    // If specific method selected, only show that method
+    return [paymentMethod]
+  }
+  // Default: show all available methods
+  return ['gcash', 'paymaya', 'card', 'bank_transfer']
+}
+
 export async function createPayMongoCheckout(
   session: PayMongoCheckoutSession
 ): Promise<PayMongoResponse> {
+  const { paymentMethod, ...sessionData } = session
+  const payment_method_types = getPaymentMethodTypes(paymentMethod)
+
   const response = await fetch('https://api.paymongo.com/v1/checkout_sessions', {
     method: 'POST',
     headers: {
@@ -33,8 +52,8 @@ export async function createPayMongoCheckout(
     body: JSON.stringify({
       data: {
         attributes: {
-          ...session,
-          payment_method_types: ['gcash', 'paymaya', 'card'],
+          ...sessionData,
+          payment_method_types,
         },
       },
     }),

@@ -7,11 +7,11 @@ import EmailSignup from '@/components/EmailSignup'
 async function getFeaturedProducts() {
   try {
     const products = await prisma.product.findMany({
-      where: { status: 'ACTIVE' },
+      where: { status: 'ACTIVE', isFeatured: true },
       include: {
         images: {
-          where: { isPrimary: true },
-          take: 1,
+          orderBy: [{ isPrimary: 'desc' }, { position: 'asc' }],
+          take: 2,
         },
         variants: {
           take: 1,
@@ -52,7 +52,7 @@ export default async function Home() {
                 </h1>
                 
                 <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl">
-                  Built like your favorite skate decks—rugged, oversized, pre-shrunk. Designed for Manila humidity with breathable 240GSM cotton and prints that never crack. This is your daily uniform.
+                  Built like your favorite skate decks, rugged, oversized, pre-shrunk. Designed for Manila humidity with breathable 240GSM cotton and prints that never crack. This is your daily uniform.
                 </p>
                 
                 {/* Feature Tags */}
@@ -90,7 +90,8 @@ export default async function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {products.map((product) => {
                   const variant = product.variants[0]
-                  const image = product.images[0]
+                  const primaryImage = product.images[0]
+                  const secondaryImage = product.images[1]
                   
                   return (
                     <Link
@@ -98,13 +99,20 @@ export default async function Home() {
                       href={`/products/${product.slug}`}
                       className="group bg-yametee-gray dark:bg-yametee-lightGray border border-yametee-lightGray/30 rounded-xl overflow-hidden hover:border-yametee-red/50 transition-all hover:scale-105 shadow-lg hover:shadow-yametee-red/20"
                     >
-                      {image && (
-                        <div className="aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark">
+                      {primaryImage && (
+                        <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark">
                           <img
-                            src={image.imageUrl}
-                            alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            src={primaryImage.imageUrl}
+                            alt={`${product.name} front`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${secondaryImage ? 'opacity-100 group-hover:opacity-0' : 'opacity-100'} group-hover:scale-105`}
                           />
+                          {secondaryImage && (
+                            <img
+                              src={secondaryImage.imageUrl}
+                              alt={`${product.name} back`}
+                              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                            />
+                          )}
                         </div>
                       )}
                       <div className="p-4 bg-yametee-gray dark:bg-yametee-lightGray">

@@ -75,7 +75,17 @@ export async function PUT(
 ) {
   try {
     const body = await request.json()
-    const { name, slug, description, status, images, variants } = body
+    const {
+      name,
+      slug,
+      description,
+      status,
+      images = [],
+      variants = [],
+      isFeatured,
+      isDrop,
+      isStandard,
+    } = body
 
     // Check if product exists
     const existing = await prisma.product.findUnique({
@@ -97,6 +107,15 @@ export async function PUT(
     }
 
     // Update product
+    const featuredValue = typeof isFeatured === 'boolean' ? isFeatured : existing.isFeatured
+    const dropValue = typeof isDrop === 'boolean' ? isDrop : existing.isDrop
+    const standardValue =
+      typeof isStandard === 'boolean'
+        ? isStandard
+        : existing.isStandard !== undefined
+        ? existing.isStandard
+        : true
+
     await prisma.product.update({
       where: { id: params.id },
       data: {
@@ -104,6 +123,9 @@ export async function PUT(
         slug,
         description: description || '',
         status: status || 'DRAFT',
+        isFeatured: featuredValue,
+        isDrop: dropValue,
+        isStandard: standardValue,
       },
     })
 

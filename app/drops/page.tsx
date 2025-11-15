@@ -4,10 +4,10 @@ import Footer from '@/components/Footer'
 import { prisma } from '@/lib/prisma'
 import { formatPrice } from '@/lib/utils'
 
-async function getProducts() {
+async function getDropProducts() {
   try {
     const products = await prisma.product.findMany({
-      where: { status: 'ACTIVE', isStandard: true },
+      where: { status: 'ACTIVE', isDrop: true },
       include: {
         images: {
           orderBy: [{ isPrimary: 'desc' }, { position: 'asc' }],
@@ -22,34 +22,34 @@ async function getProducts() {
     })
     return products
   } catch (error) {
-    console.error('Error fetching products:', error)
+    console.error('Error fetching drop products:', error)
     return []
   }
 }
 
-export default async function ProductsPage() {
-  const products = await getProducts()
+export default async function DropsPage() {
+  const products = await getDropProducts()
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 py-12 px-4">
         <div className="container mx-auto">
           <div className="max-w-3xl mb-12">
-            <p className="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Standard Shirts</p>
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-3">Shop Tees</h1>
-            <p className="text-base text-gray-600 dark:text-gray-400 mt-3">
-              Core graphics and everyday staples that stay in stock. Updated fits, pre-shrunk, ready for daily rotation.
+            <p className="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Limited Releases</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-4">Drops</h1>
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mt-4">
+              Fresh artwork, small batches, zero restocks. When it&apos;s gone, it&apos;s gone. Tap in before the drop sells out.
             </p>
           </div>
-          
+
           {products.length === 0 ? (
             <div className="text-center py-20">
-            <p className="text-gray-600 dark:text-gray-400 text-xl mb-3">No Shop Tees available yet.</p>
-            <p className="text-gray-500 dark:text-gray-500">
-              Check the Drops page or come back soon for fresh restocks.
-            </p>
+              <p className="text-gray-600 dark:text-gray-400 text-xl mb-3">No drops available right now.</p>
+              <p className="text-gray-500 dark:text-gray-500">
+                Follow us on TikTok @yametee for the next release announcement.
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -57,12 +57,12 @@ export default async function ProductsPage() {
                 const variant = product.variants[0]
                 const primaryImage = product.images[0]
                 const secondaryImage = product.images[1]
-                
+
                 return (
                   <Link
                     key={product.id}
                     href={`/products/${product.slug}`}
-                    className="group bg-white dark:bg-yametee-gray border border-gray-200 dark:border-yametee-lightGray/30 rounded-xl overflow-hidden hover:border-yametee-red/50 transition-all hover:scale-105 shadow-lg hover:shadow-yametee-red/20"
+                    className="group bg-white dark:bg-yametee-gray border border-gray-200 dark:border-yametee-lightGray/30 rounded-xl overflow-hidden hover:border-yametee-red/60 transition-all hover:scale-105 shadow-lg hover:shadow-yametee-red/20"
                   >
                     {primaryImage ? (
                       <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-yametee-gray dark:to-yametee-dark">
@@ -85,15 +85,20 @@ export default async function ProductsPage() {
                       </div>
                     )}
                     <div className="p-4 bg-white dark:bg-yametee-gray">
+                      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-yametee-red mb-2">
+                        <span>Drop</span>
+                        <span className="text-gray-400 dark:text-gray-500">•</span>
+                        <span>Limited</span>
+                      </div>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-yametee-red transition-colors line-clamp-2">
                         {product.name}
                       </h3>
                       {variant && (
                         <div className="flex items-baseline gap-2">
                           <p className="text-yametee-red text-xl font-bold">
-                            {formatPrice(variant.price)}
+                            {formatPrice(variant.price.toString())}
                           </p>
-                          <p className="text-gray-400 text-sm line-through">₱799</p>
+                          <p className="text-gray-400 text-sm uppercase tracking-wide">Limited Qty</p>
                         </div>
                       )}
                     </div>
@@ -109,3 +114,4 @@ export default async function ProductsPage() {
     </div>
   )
 }
+

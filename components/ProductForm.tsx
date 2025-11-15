@@ -30,6 +30,9 @@ interface Product {
   slug: string
   description: string
   status: string
+  isFeatured: boolean
+  isDrop: boolean
+  isStandard: boolean
   images: ProductImage[]
   variants: Variant[]
 }
@@ -38,14 +41,51 @@ interface ProductFormProps {
   product?: Product
 }
 
+type PlacementKey = 'isFeatured' | 'isDrop' | 'isStandard'
+
+type FormState = {
+  name: string
+  slug: string
+  description: string
+  status: string
+  isFeatured: boolean
+  isDrop: boolean
+  isStandard: boolean
+}
+
+const PLACEMENT_OPTIONS: Array<{
+  key: PlacementKey
+  title: string
+  description: string
+}> = [
+  {
+    key: 'isFeatured',
+    title: 'Featured',
+    description: 'Spotlight this design on the homepage featured grid.',
+  },
+  {
+    key: 'isDrop',
+    title: 'Drops',
+    description: 'Limited releases that appear on the Drops page & announcements.',
+  },
+  {
+    key: 'isStandard',
+    title: 'Shop Tees',
+    description: 'Evergreen designs listed under Shop Tees on the store.',
+  },
+]
+
 export default function ProductForm({ product }: ProductFormProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormState>({
     name: product?.name || '',
     slug: product?.slug || '',
     description: product?.description || '',
     status: product?.status || 'DRAFT',
+    isFeatured: product?.isFeatured ?? false,
+    isDrop: product?.isDrop ?? false,
+    isStandard: product?.isStandard ?? true,
   })
   // Get unique colors from existing variants
   const getUniqueColors = (variants: Variant[]) => {
@@ -76,6 +116,13 @@ export default function ProductForm({ product }: ProductFormProps) {
   )
   const [variants, setVariants] = useState<Variant[]>(product?.variants || [])
   const [images, setImages] = useState<ProductImage[]>(product?.images || [])
+
+  const handlePlacementToggle = (key: PlacementKey) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }))
+  }
 
   useEffect(() => {
     if (!product && formData.name) {
@@ -228,6 +275,10 @@ export default function ProductForm({ product }: ProductFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!formData.isDrop && !formData.isStandard) {
+      alert('Select at least one store placement (Drops or Shop Tees)')
+      return
+    }
     setLoading(true)
 
     try {
@@ -304,6 +355,48 @@ export default function ProductForm({ product }: ProductFormProps) {
               <option value="ACTIVE">Active</option>
               <option value="HIDDEN">Hidden</option>
             </select>
+          </div>
+          <div>
+            <label className="block text-gray-900 dark:text-white mb-2">Store Placement</label>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              Choose where this product should appear across the storefront. Combine options as needed.
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {PLACEMENT_OPTIONS.map((option) => {
+                const isActive = formData[option.key]
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => handlePlacementToggle(option.key)}
+                    className={`w-full text-left border rounded-xl p-4 transition-all ${
+                      isActive
+                        ? 'border-yametee-red bg-yametee-red/5 shadow-[0_0_0_1px_rgba(229,9,20,0.4)]'
+                        : 'border-gray-200 dark:border-gray-700 hover:border-yametee-red/60'
+                    }`}
+                  >
+                    <span
+                      className={`block text-lg font-semibold mb-2 ${
+                        isActive ? 'text-yametee-red' : 'text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      {option.title}
+                    </span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{option.description}</span>
+                  </button>
+                )
+              })}
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
+              Select <span className="font-semibold">Drops</span> for limited releases and <span className="font-semibold">Shop Tees</span> for standard shirts.
+              Use <span className="font-semibold">Featured</span> to highlight the item on the main site.
+            </p>
+            {!formData.isDrop && !formData.isStandard && (
+              <p className="text-sm text-yellow-600 dark:text-yellow-400 mt-2">
+                Select either Drops or Shop Tees so customers can discover this product.
+              </p>
+            )}
           </div>
         </div>
       </div>
