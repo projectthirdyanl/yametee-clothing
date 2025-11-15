@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PAYMONGO_SECRET_KEY=${PAYMONGO_SECRET_KEY}
+      - PAYMONGO_PUBLIC_KEY=${PAYMONGO_PUBLIC_KEY}
+      - PAYMONGO_WEBHOOK_SECRET=${PAYMONGO_WEBHOOK_SECRET}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+    volumes:
+      - ./prisma:/app/prisma
+    restart: unless-stopped
+    # Using external PostgreSQL server on Proxmox container (192.168.120.6)
+    # Remove depends_on since we're connecting to external database
