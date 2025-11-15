@@ -8,8 +8,17 @@ const navigation = [
   { name: 'Dashboard', href: '/admin', icon: '📊' },
   { name: 'Orders', href: '/admin/orders', icon: '📦' },
   { name: 'Products', href: '/admin/products', icon: '👕' },
+  { name: 'Collections', href: '/admin/collections', icon: '🎨' },
+  { name: 'Promotions', href: '/admin/promotions', icon: '🎟️' },
   { name: 'Customers', href: '/admin/customers', icon: '👥' },
   { name: 'Inventory', href: '/admin/inventory', icon: '📊' },
+]
+
+const statusTape = [
+  'Drop 07 Fulfillment',
+  'PayMongo Connected',
+  'Low Stock Monitor Active',
+  'Overnight Shipping Beta',
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -24,7 +33,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     if (!token && pathname !== '/admin/login') {
       router.push('/admin/login')
     }
-    // Load sidebar state from localStorage
     const savedSidebarState = localStorage.getItem('adminSidebarOpen')
     if (savedSidebarState !== null) {
       setSidebarOpen(savedSidebarState === 'true')
@@ -39,40 +47,55 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (!mounted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-yametee-dark">
-        <p className="text-gray-900 dark:text-white">Loading...</p>
+      <div className="flex min-h-screen items-center justify-center bg-street-carbon text-white">
+        <p className="tracking-[0.4em] text-white/60">LOADING</p>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-yametee-dark transition-colors duration-300">
-      <nav className="bg-white dark:bg-yametee-gray border-b border-gray-200 dark:border-gray-700 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div className="relative min-h-screen overflow-hidden bg-street-ink text-white">
+        <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-24 top-0 h-96 w-96 rounded-full bg-yametee-red/25 blur-[180px]" />
+        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-street-lime/15 blur-[180px]" />
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40H180' stroke='white' stroke-opacity='0.05'/%3E%3Cpath d='M0 80H180' stroke='white' stroke-opacity='0.05'/%3E%3Cpath d='M40 0V180' stroke='white' stroke-opacity='0.05'/%3E%3Cpath d='M80 0V180' stroke='white' stroke-opacity='0.05'/%3E%3C/svg%3E\")",
+            }}
+          />
+      </div>
+
+      <header className="relative border-b border-white/10 bg-street-carbon/70 backdrop-blur-xl">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <div className="flex items-center gap-4">
             <button
               onClick={toggleSidebar}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-yametee-dark transition-colors text-gray-700 dark:text-gray-300"
+              className="rounded-2xl border border-white/15 bg-white/5 p-3 text-white transition hover:border-street-lime/40"
               aria-label="Toggle sidebar"
             >
               {sidebarOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
-            <Link href="/admin" className="text-xl font-bold text-gray-900 dark:text-white">
-              YAMETEE Admin
+            <Link href="/admin" className="font-display text-2xl tracking-[0.2em] text-white">
+              YAMETEE OPS
             </Link>
+            <span className="hidden rounded-full border border-white/15 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/60 md:inline-flex">
+              Manila Control Room
+            </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 text-sm uppercase tracking-[0.3em]">
             <Link
               href="/"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="rounded-full border border-white/15 px-4 py-2 text-white/70 transition hover:border-street-lime/40 hover:text-white"
             >
               View Store
             </Link>
@@ -81,21 +104,31 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 localStorage.removeItem('adminToken')
                 router.push('/admin/login')
               }}
-              className="text-gray-600 dark:text-gray-400 hover:text-yametee-red transition-colors"
+              className="rounded-full border border-white/15 px-4 py-2 text-white/60 transition hover:border-yametee-red/40 hover:text-white"
             >
               Logout
             </button>
           </div>
         </div>
-      </nav>
-      <div className="flex">
-        {/* Sidebar */}
+        <div className="marquee border-t border-white/10 bg-black/30 text-[10px] uppercase tracking-[0.6em] text-white/60">
+          <div className="marquee-track">
+            {statusTape.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+            {statusTape.map((item) => (
+              <span key={`${item}-ghost`}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <div className="relative flex">
         <aside
-          className={`bg-white dark:bg-yametee-gray border-r border-gray-200 dark:border-gray-700 min-h-[calc(100vh-73px)] transition-all duration-300 ${
+          className={`border-r border-white/10 bg-street-carbon/40 backdrop-blur-xl transition-all duration-300 ${
             sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'
           }`}
         >
-          <nav className={`p-4 space-y-2 ${sidebarOpen ? '' : 'hidden'}`}>
+          <nav className={`space-y-2 px-4 py-6 transition-opacity ${sidebarOpen ? 'opacity-100' : 'opacity-0'}`}>
             {navigation.map((item) => {
               const isActive =
                 pathname === item.href ||
@@ -105,22 +138,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] transition ${
                     isActive
-                      ? 'bg-yametee-red text-white'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-yametee-dark'
+                      ? 'border-street-lime/40 bg-street-lime/10 text-street-lime shadow-neon'
+                      : 'border-white/5 bg-white/0 text-white/70 hover:border-white/20 hover:bg-white/5'
                   }`}
                 >
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="font-medium">{item.name}</span>
+                  <span className="text-base">{item.icon}</span>
+                  <span>{item.name}</span>
                 </Link>
               )
             })}
           </nav>
         </aside>
-        {/* Main Content */}
-        <main className={`flex-1 container mx-auto px-4 py-8 transition-all duration-300`}>
-          {children}
+
+        <main className="relative flex-1 px-4 py-10">
+          <div className="container mx-auto">
+            <div className="rounded-[32px] border border-white/10 bg-street-carbon/60 p-1">
+              <div className="rounded-[28px] border border-white/5 bg-black/40 p-6 shadow-brand">
+                {children}
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

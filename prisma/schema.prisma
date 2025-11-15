@@ -11,18 +11,23 @@ datasource db {
 }
 
 model Product {
-  id          String         @id @default(cuid())
-  slug        String         @unique
+  id          String        @id @default(cuid())
+  slug        String        @unique
   name        String
-  description String         @db.Text
-  brand       String         @default("Yametee")
-  status      ProductStatus  @default(DRAFT)
-  createdAt   DateTime       @default(now()) @map("created_at")
-  updatedAt   DateTime       @updatedAt @map("updated_at")
+  description String        @db.Text
+  brand       String        @default("Yametee")
+  status      ProductStatus @default(DRAFT)
+  tags        String[]      @default([])
+  metadata    Json?
+  seo         Json?
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
 
-  variants    Variant[]
-  images      ProductImage[]
-  orderItems  OrderItem[]
+  variants           Variant[]
+  images             ProductImage[]
+  orderItems         OrderItem[]
+  collectionProducts CollectionProduct[]
+  releaseWindows     ReleaseWindow[]
 
   @@map("products")
 }
@@ -31,6 +36,7 @@ enum ProductStatus {
   ACTIVE
   DRAFT
   HIDDEN
+  ARCHIVED
 }
 
 model Variant {
@@ -39,88 +45,293 @@ model Variant {
   sku           String
   size          String
   color         String
+  barcode       String?
   price         Decimal  @db.Decimal(10, 2)
   stockQuantity Int      @default(0) @map("stock_quantity")
+  weightGrams   Int?     @map("weight_grams")
+  metadata      Json?
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
-  product       Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
-  orderItems    OrderItem[]
+  product         Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderItems      OrderItem[]
+  inventoryEvents InventoryEvent[]
 
   @@unique([productId, size, color])
   @@map("variants")
 }
 
-model ProductImage {
-  id         String   @id @default(cuid())
-  productId  String   @map("product_id")
-  imageUrl   String   @map("image_url")
-  color      String?  // Color variant this image belongs to (Black, White, Red, or null for all colors)
-  isPrimary  Boolean  @default(false) @map("is_primary")
-  position   Int      @default(0)
-  createdAt  DateTime @default(now()) @map("created_at")
+model InventoryEvent {
+  id             String               @id @default(cuid())
+  variantId      String               @map("variant_id")
+  quantityChange Int                  @map("quantity_change")
+  reason         InventoryEventReason
+  referenceId    String?              @map("reference_id")
+  notes          String?
+  actorType      ActorType            @default(SYSTEM) @map("actor_type")
+  actorId        String?              @map("actor_id")
+  createdAt      DateTime             @default(now()) @map("created_at")
 
-  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  variant Variant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([variantId, createdAt])
+  @@map("inventory_events")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String   @map("product_id")
+  imageUrl  String   @map("image_url")
+  color     String? // Color variant this image belongs to (Black, White, Red, or null for all colors)
+  isPrimary Boolean  @default(false) @map("is_primary")
+  position  Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("product_images")
 }
 
-model Customer {
-  id            String    @id @default(cuid())
-  email         String?   @unique
-  phone         String?
-  name          String?
-  hashedPassword String?  @map("hashed_password")
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
+model Collection {
+  id             String           @id @default(cuid())
+  slug           String           @unique
+  title          String
+  subtitle       String?
+  description    String?          @db.Text
+  story          Json?
+  heroImage      String?          @map("hero_image")
+  lookbookImages String[]         @default([]) @map("lookbook_images")
+  status         CollectionStatus @default(DRAFT)
+  launchDate     DateTime?        @map("launch_date")
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
 
-  addresses     Address[]
-  orders        Order[]
+  products       CollectionProduct[]
+  releaseWindows ReleaseWindow[]
+  promotions     Promotion[]
+
+  @@map("collections")
+}
+
+model CollectionProduct {
+  id           String  @id @default(cuid())
+  collectionId String  @map("collection_id")
+  productId    String  @map("product_id")
+  displayOrder Int     @default(0) @map("display_order")
+  featured     Boolean @default(false)
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  product    Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, productId])
+  @@map("collection_products")
+}
+
+model ReleaseWindow {
+  id            String        @id @default(cuid())
+  productId     String?       @map("product_id")
+  collectionId  String?       @map("collection_id")
+  startsAt      DateTime      @map("starts_at")
+  endsAt        DateTime?     @map("ends_at")
+  password      String?
+  allowlistOnly Boolean       @default(false) @map("allowlist_only")
+  status        ReleaseStatus @default(DRAFT)
+  maxUnits      Int?          @map("max_units")
+  notes         String?
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  product    Product?    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  collection Collection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@index([productId, startsAt])
+  @@index([collectionId, startsAt])
+  @@map("release_windows")
+}
+
+model Customer {
+  id             String   @id @default(cuid())
+  email          String?  @unique
+  phone          String?
+  name           String?
+  username       String?  @unique
+  hashedPassword String?  @map("hashed_password")
+  marketingOptIn Boolean  @default(true) @map("marketing_opt_in")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  addresses Address[]
+  orders    Order[]
+  profile   CustomerProfile?
 
   @@map("customers")
 }
 
 model Address {
-  id         String    @id @default(cuid())
-  customerId String?   @map("customer_id")
-  fullName   String    @map("full_name")
+  id         String   @id @default(cuid())
+  customerId String?  @map("customer_id")
+  fullName   String   @map("full_name")
   phone      String
   line1      String
   line2      String?
   city       String
   province   String
-  postalCode String    @map("postal_code")
-  country    String    @default("Philippines")
-  createdAt  DateTime  @default(now()) @map("created_at")
-  updatedAt  DateTime  @updatedAt @map("updated_at")
+  postalCode String   @map("postal_code")
+  country    String   @default("Philippines")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
 
-  customer   Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
-  orders     Order[]
+  customer Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  orders   Order[]
 
   @@map("addresses")
 }
 
-model Order {
-  id            String        @id @default(cuid())
-  orderNumber   String        @unique @map("order_number")
-  customerId    String?       @map("customer_id")
-  addressId     String?       @map("address_id")
-  status        OrderStatus   @default(PENDING)
-  paymentStatus PaymentStatus @default(UNPAID) @map("payment_status")
-  paymentProvider String?     @map("payment_provider")
-  subtotal      Decimal       @db.Decimal(10, 2)
-  shippingFee   Decimal       @default(0) @db.Decimal(10, 2) @map("shipping_fee")
-  discountTotal Decimal       @default(0) @db.Decimal(10, 2) @map("discount_total")
-  grandTotal    Decimal       @db.Decimal(10, 2) @map("grand_total")
-  createdAt     DateTime      @default(now()) @map("created_at")
-  updatedAt     DateTime      @updatedAt @map("updated_at")
+model CustomerProfile {
+  id             String       @id @default(cuid())
+  customerId     String       @unique @map("customer_id")
+  preferredSizes String[]     @default([]) @map("preferred_sizes")
+  styleTags      String[]     @default([]) @map("style_tags")
+  loyaltyTier    CustomerTier @default(BRONZE) @map("loyalty_tier")
+  lifetimeValue  Decimal      @default(0) @map("lifetime_value") @db.Decimal(12, 2)
+  lastPurchaseAt DateTime?    @map("last_purchase_at")
+  notes          String?
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
 
-  customer      Customer?     @relation(fields: [customerId], references: [id], onDelete: SetNull)
-  address       Address?      @relation(fields: [addressId], references: [id], onDelete: SetNull)
-  items         OrderItem[]
-  payments      Payment[]
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@map("customer_profiles")
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  orderNumber     String        @unique @map("order_number")
+  customerId      String?       @map("customer_id")
+  addressId       String?       @map("address_id")
+  status          OrderStatus   @default(PENDING)
+  paymentStatus   PaymentStatus @default(UNPAID) @map("payment_status")
+  paymentProvider String?       @map("payment_provider")
+  sourceChannel   String?       @map("source_channel")
+  notes           String?       @db.Text
+  subtotal        Decimal       @db.Decimal(10, 2)
+  shippingFee     Decimal       @default(0) @map("shipping_fee") @db.Decimal(10, 2)
+  discountTotal   Decimal       @default(0) @map("discount_total") @db.Decimal(10, 2)
+  grandTotal      Decimal       @map("grand_total") @db.Decimal(10, 2)
+  metadata        Json?
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  customer   Customer?              @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  address    Address?               @relation(fields: [addressId], references: [id], onDelete: SetNull)
+  items      OrderItem[]
+  payments   Payment[]
+  promotions PromotionApplication[]
 
   @@map("orders")
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String  @map("order_id")
+  productId  String  @map("product_id")
+  variantId  String  @map("variant_id")
+  quantity   Int
+  unitPrice  Decimal @map("unit_price") @db.Decimal(10, 2)
+  totalPrice Decimal @map("total_price") @db.Decimal(10, 2)
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+  variant Variant @relation(fields: [variantId], references: [id])
+
+  @@map("order_items")
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  orderId           String        @map("order_id")
+  provider          String        @default("PAYMONGO")
+  providerPaymentId String?       @map("provider_payment_id")
+  amount            Decimal       @db.Decimal(10, 2)
+  currency          String        @default("PHP")
+  fee               Decimal?      @db.Decimal(10, 2)
+  netAmount         Decimal?      @map("net_amount") @db.Decimal(10, 2)
+  status            PaymentStatus @default(PENDING)
+  rawPayload        Json?         @map("raw_payload")
+  createdAt         DateTime      @default(now()) @map("created_at")
+  updatedAt         DateTime      @updatedAt @map("updated_at")
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model Promotion {
+  id           String          @id @default(cuid())
+  code         String?         @unique
+  name         String
+  description  String?
+  type         PromotionType   @default(PERCENTAGE)
+  status       PromotionStatus @default(DRAFT)
+  value        Decimal         @db.Decimal(10, 2)
+  stackable    Boolean         @default(false)
+  usageLimit   Int?            @map("usage_limit")
+  usageCount   Int             @default(0) @map("usage_count")
+  startsAt     DateTime?       @map("starts_at")
+  endsAt       DateTime?       @map("ends_at")
+  channels     String[]        @default([])
+  conditions   Json?
+  metadata     Json?
+  collectionId String?         @map("collection_id")
+  createdAt    DateTime        @default(now()) @map("created_at")
+  updatedAt    DateTime        @updatedAt @map("updated_at")
+
+  collection   Collection?            @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  rules        PromotionRule[]
+  applications PromotionApplication[]
+
+  @@map("promotions")
+}
+
+model PromotionRule {
+  id          String            @id @default(cuid())
+  promotionId String            @map("promotion_id")
+  ruleType    PromotionRuleType @map("rule_type")
+  payload     Json?
+  createdAt   DateTime          @default(now()) @map("created_at")
+
+  promotion Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+
+  @@map("promotion_rules")
+}
+
+model PromotionApplication {
+  id          String   @id @default(cuid())
+  promotionId String   @map("promotion_id")
+  orderId     String   @map("order_id")
+  amount      Decimal  @db.Decimal(10, 2)
+  appliedAt   DateTime @default(now()) @map("applied_at")
+  snapshot    Json?
+
+  promotion Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+  order     Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@unique([promotionId, orderId])
+  @@map("promotion_applications")
+}
+
+model AuditLog {
+  id         String    @id @default(cuid())
+  entityType String    @map("entity_type")
+  entityId   String    @map("entity_id")
+  action     String
+  actorType  ActorType @default(SYSTEM) @map("actor_type")
+  actorId    String?   @map("actor_id")
+  payload    Json?
+  createdAt  DateTime  @default(now()) @map("created_at")
+
+  @@index([entityType, entityId])
+  @@map("audit_logs")
 }
 
 enum OrderStatus {
@@ -140,34 +351,66 @@ enum PaymentStatus {
   FAILED
 }
 
-model OrderItem {
-  id         String   @id @default(cuid())
-  orderId    String   @map("order_id")
-  productId  String   @map("product_id")
-  variantId  String   @map("variant_id")
-  quantity   Int
-  unitPrice  Decimal  @db.Decimal(10, 2) @map("unit_price")
-  totalPrice Decimal  @db.Decimal(10, 2) @map("total_price")
-
-  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product    Product  @relation(fields: [productId], references: [id])
-  variant    Variant  @relation(fields: [variantId], references: [id])
-
-  @@map("order_items")
+enum CollectionStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
 }
 
-model Payment {
-  id                String        @id @default(cuid())
-  orderId           String        @map("order_id")
-  provider           String        @default("PAYMONGO")
-  providerPaymentId String?       @map("provider_payment_id")
-  amount             Decimal       @db.Decimal(10, 2)
-  status             PaymentStatus @default(PENDING)
-  rawPayload         Json?         @map("raw_payload")
-  createdAt          DateTime      @default(now()) @map("created_at")
-  updatedAt          DateTime      @updatedAt @map("updated_at")
+enum ReleaseStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  CLOSED
+  CANCELLED
+}
 
-  order              Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+enum InventoryEventReason {
+  PURCHASE
+  RESTOCK
+  ADJUSTMENT
+  RESERVATION
+  CORRECTION
+}
 
-  @@map("payments")
+enum PromotionType {
+  PERCENTAGE
+  FIXED_AMOUNT
+  FREE_SHIPPING
+  BUNDLE
+  GIFT
+}
+
+enum PromotionStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  PAUSED
+  EXPIRED
+  ARCHIVED
+}
+
+enum PromotionRuleType {
+  MIN_SUBTOTAL
+  MAX_SUBTOTAL
+  PRODUCT_INCLUDE
+  PRODUCT_EXCLUDE
+  COLLECTION_INCLUDE
+  CUSTOMER_TIER
+  FIRST_PURCHASE
+  CUSTOM
+}
+
+enum ActorType {
+  ADMIN
+  CUSTOMER
+  SYSTEM
+}
+
+enum CustomerTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+  BLACK
 }

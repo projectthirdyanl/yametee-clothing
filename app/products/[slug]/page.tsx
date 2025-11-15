@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 py-12 px-4">
+      <main className="flex-1 px-4 py-16">
         <div className="container mx-auto">
           <ProductDetailClient product={product} />
         </div>

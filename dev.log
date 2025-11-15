@@ -1,0 +1,805 @@
+
+> yametee@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 12.6s
+ ○ Compiling / ...
+The user aborted a request.
+
+Retrying 1/3...
+The user aborted a request.
+
+Retrying 1/3...
+The user aborted a request.
+
+Retrying 2/3...
+The user aborted a request.
+
+Retrying 2/3...
+The user aborted a request.
+
+Retrying 1/3...
+The user aborted a request.
+
+Retrying 1/3...
+The user aborted a request.
+
+Retrying 1/3...
+ ⨯ ./components/Header.tsx
+Error: 
+  [31mx[0m Unexpected token `header`. Expected jsx identifier
+    ,-[[36;1;4m/home/it-admin/Documents/project/yametee-clothing/components/Header.tsx[0m:35:1]
+ [2m35[0m |   }, [])
+ [2m36[0m | 
+ [2m37[0m |   return (
+ [2m38[0m |     <header className="sticky top-0 z-50 border-b border-white/10 bg-street-carbon/80 backdrop-blur-2xl shadow-brand">
+    : [31;1m     ^^^^^^[0m
+ [2m39[0m |       <div className="border-b border-white/10 bg-white/5 px-4 py-2 text-center text-[10px] uppercase tracking-[0.6em] text-white/60">
+ [2m40[0m |         Drop 07 · Manila Studio · Premium Graphic Tees
+ [2m41[0m |       </div>
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/Header.tsx
+./app/not-found.tsx
+ ⨯ ./components/Header.tsx
+Error: 
+  [31mx[0m Unexpected token `header`. Expected jsx identifier
+    ,-[[36;1;4m/home/it-admin/Documents/project/yametee-clothing/components/Header.tsx[0m:35:1]
+ [2m35[0m |   }, [])
+ [2m36[0m | 
+ [2m37[0m |   return (
+ [2m38[0m |     <header className="sticky top-0 z-50 border-b border-white/10 bg-street-carbon/80 backdrop-blur-2xl shadow-brand">
+    : [31;1m     ^^^^^^[0m
+ [2m39[0m |       <div className="border-b border-white/10 bg-white/5 px-4 py-2 text-center text-[10px] uppercase tracking-[0.6em] text-white/60">
+ [2m40[0m |         Drop 07 · Manila Studio · Premium Graphic Tees
+ [2m41[0m |       </div>
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/Header.tsx
+./app/page.tsx
+ ⨯ ./components/Header.tsx
+Error: 
+  [31mx[0m Unexpected token `header`. Expected jsx identifier
+    ,-[[36;1;4m/home/it-admin/Documents/project/yametee-clothing/components/Header.tsx[0m:35:1]
+ [2m35[0m |   }, [])
+ [2m36[0m | 
+ [2m37[0m |   return (
+ [2m38[0m |     <header className="sticky top-0 z-50 border-b border-white/10 bg-street-carbon/80 backdrop-blur-2xl shadow-brand">
+    : [31;1m     ^^^^^^[0m
+ [2m39[0m |       <div className="border-b border-white/10 bg-white/5 px-4 py-2 text-center text-[10px] uppercase tracking-[0.6em] text-white/60">
+ [2m40[0m |         Drop 07 · Manila Studio · Premium Graphic Tees
+ [2m41[0m |       </div>
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/Header.tsx
+./app/page.tsx
+ GET / 500 in 25040ms
+ GET / 500 in 71ms
+ GET / 500 in 28ms
+ GET / 500 in 30ms
+ ✓ Compiled /_error in 3.4s (798 modules)
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+digest: "1042490343"
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343',
+  page: '/'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+digest: "1042490343"
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343',
+  page: '/'
+}
+ GET / 500 in 210ms
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3335002546"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3335002546"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+digest: "1042490343"
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343',
+  page: '/'
+}
+ GET / 500 in 50ms
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3076126301"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+digest: "1042490343"
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343',
+  page: '/'
+}
+ GET / 500 in 122ms
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3335002546"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async Promise.all (index 0)
+digest: "3335002546"
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+digest: "1042490343"
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343'
+}
+ ⨯ Error: Cannot find module '.prisma/client/default'
+Require stack:
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js
+- /home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/load-components.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/build/utils.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-middleware.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/router-server.js
+- /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/home/it-admin/Documents/project/yametee-clothing/node_modules/@prisma/client/default.js:2:6)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at @prisma/client (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:22:18)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./lib/prisma.ts:5:72)
+    at (rsc)/./lib/prisma.ts (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:257:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./app/page.tsx:10:69)
+    at (rsc)/./app/page.tsx (/home/it-admin/Documents/project/yametee-clothing/.next/server/app/page.js:184:1)
+    at __webpack_require__ (/home/it-admin/Documents/project/yametee-clothing/.next/server/webpack-runtime.js:33:42)
+    at async e7 (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:396972)
+    at async tS (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:400486)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401047)
+    at async tw (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:401178)
+    at async tO (/home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2320)
+    at async /home/it-admin/Documents/project/yametee-clothing/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:36:2989 {
+  digest: '1042490343',
+  page: '/'
+}
+ GET / 500 in 45ms

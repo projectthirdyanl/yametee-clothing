@@ -2,6 +2,19 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { Space_Grotesk, Bebas_Neue } from "next/font/google";
+
+const bodyFont = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+});
+
+const displayFont = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: "Yametee - Anime-Inspired Japanese Streetwear",
@@ -14,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${bodyFont.variable} ${displayFont.variable} antialiased`}>
         <Script
           id="theme-init"
           strategy="beforeInteractive"
